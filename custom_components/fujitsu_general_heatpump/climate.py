@@ -8,7 +8,7 @@ import voluptuous as vol
 
 from homeassistant.components.climate import (
     PLATFORM_SCHEMA,
-    ClimateDevice
+    ClimateEntity
 )
 
 from homeassistant.components.climate.const import (
@@ -77,7 +77,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     devices = fglairapi.get_devices_dsn()
     add_entities(FujitsuClimate(fglairapi, dsn) for dsn in devices)
 
-class FujitsuClimate(ClimateDevice):
+class FujitsuClimate(ClimateEntity):
     """Representation of a Fujitsu Heatpump."""
 
     def __init__(self, api, dsn):
